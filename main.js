@@ -11,16 +11,17 @@ function addTask() {
     return;
   }
   // Skapa och lägg till den nya tasken i container-diven
-  newDiv = textContainer.innerHTML += `<div class="task-div">${text}
-            <input type="checkbox" id="myCheck">
-            <label for="myCheck">Markera som slutförd</label>
-            <button class="delete-btn">Ta bort uppgift</button>
-        </div>`;
+  newDiv = textContainer.innerHTML +=
+  `<div class="task-div">
+    <span class="text">${text}</span>
+    <button class="complete-btn">Slutförd</button>
+    <button class="delete-btn">Ta bort</button>
+  </div>`;
 
   // Rensa textrutan
   todoInput.value = "";
 }
-// Lägg till en eventlistener på knappen som lägger till tasken
+// Lägg till en eventlistener på knappen som lägger till uppgift
 addTodoBtn.addEventListener("click", addTask);
 
 todoInput.addEventListener("keyup", function (e) {
@@ -33,18 +34,13 @@ todoInput.addEventListener("keyup", function (e) {
 textContainer.addEventListener("click", function (e) {
   const clickedElement = e.target;
 
-  if (clickedElement.type === "checkbox") {
-    // Markera som slutförd eller icke-slutförd
-    const taskDiv = clickedElement.parentElement;
-    if (clickedElement.checked) {
-      taskDiv.classList.add("completed");
-    } else {
-      taskDiv.classList.remove("completed");
-    }
+  if (clickedElement.classList.contains("complete-btn")) {
+    // Markera som slutförd/icke-slutförd
+    clickedElement.classList.toggle("completed");
   }
 
   if (clickedElement.classList.contains("delete-btn")) {
-    // Ta bort uppgiften
+    // Ta bort uppgift
     const taskDiv = clickedElement.parentElement;
     textContainer.removeChild(taskDiv);
   }
