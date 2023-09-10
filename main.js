@@ -23,6 +23,12 @@ function addTask() {
 // Lägg till en eventlistener på knappen som lägger till tasken
 addTodoBtn.addEventListener("click", addTask);
 
+todoInput.addEventListener("keyup", function (e) {
+  if (e.key === "Enter") {
+    addTask();
+  }
+});
+
 // Lägg till en eventlistener på containern för att hantera klicks
 textContainer.addEventListener("click", function (e) {
   const clickedElement = e.target;
