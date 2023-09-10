@@ -1,5 +1,10 @@
 body {
-    background-color: aquamarine;
+    background-image: url('/images/task-management.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .text-container {
